@@ -78,8 +78,9 @@ export const groups = [
  */
 export const sites = [
   // ---------- 产品 ----------
-  { id: "product-rdk-manual", group: "products", title: "RDK 用户手册", description: "RDK X3/X5/S100/S600 文档", href: "/rdk_doc/Quick_start", tags: ["用户手册"] },
-
+  { id: "product-rdk-manual", group: "products", title: "RDK X3/X5用户手册", description: "RDK X3/X5 文档", href: "/rdk_doc/Quick_start", tags: ["用户手册"] },
+  { id: "product-rdk-manual", group: "products", title: "RDK S100/S600用户手册", description: "RDK S100/S600 文档", href: "/rdk_doc/Quick_start", tags: ["用户手册"] },
+  
   // ---------- 系统软件 ----------
   { id: "system-software-sdk", group: "system-software", title: "SDK", description: "系统软件 SDK 文档入口。", href: "/system-software/sdk", tags: ["系统软件"] },
  
