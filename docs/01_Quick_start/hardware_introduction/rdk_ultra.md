@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# 1.1.3 RDK Ultra
+# 1.1.2 RDK Ultra
 
 :::tip 📦 完整硬件资料汇总
 

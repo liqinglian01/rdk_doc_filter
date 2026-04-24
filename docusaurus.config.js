@@ -5,6 +5,8 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import { themes as prismThemes } from "prism-react-renderer";
+import remarkDirective from "remark-directive";
+import remarkDocScope from "./src/remark/remark-doc-scope.js";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -68,6 +70,7 @@ const config = {
           routeBasePath: "/", // 修改默认文档路径
           sidebarPath: "./sidebars.js",
           showLastUpdateTime: true,
+          remarkPlugins: [remarkDirective, remarkDocScope],
         },
         blog: { showReadingTime: true },
         pages: { exclude: ["/imager/**", "**/dl/**"] },
@@ -86,6 +89,7 @@ const config = {
         routeBasePath: "rdk_s",
         sidebarPath: "./sidebars.js",
         showLastUpdateTime: true,
+        remarkPlugins: [remarkDirective, remarkDocScope],
       },
     ],
   ],
@@ -110,12 +114,7 @@ const config = {
           href: "https://d-robotics.cc/", // 修改为文档根路径
         },
         items: [
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            position: "left",
-            label: "RDK X3 / X5",
-          },
+          
           // add by xgs for S100_doc 2025 年 4 月 21 日 16:34:51 新增S100_doc npm install 去新增插件
           // {
           //   to: '/docs_s/',  // 与routeBasePath保持一致
@@ -123,12 +122,10 @@ const config = {
           //   position: 'left',
           //   // activeBaseRegex: '/docs_s/',
           // },
+          
           {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            docsPluginId: "docs_s",
-            position: "left",
-            label: "RDK S100",
+            type: 'custom-DocScopeSelectors',
+            position: 'left',
           },
 
           {

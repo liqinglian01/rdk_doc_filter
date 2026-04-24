@@ -4,6 +4,49 @@ sidebar_position: 1
 
 # 1.1.1 RDK X3
 
+```mdx-code-block
+import DocScope from '@site/src/components/DocScope';
+```
+
+<DocScope versions="3.0.0" products="RDK X3 Module">
+
+:::info
+这里是只在版本 3.0.0 中显示的RDK X3 Module内容。
+:::
+
+</DocScope>
+
+<DocScope versions="3.0.0" products="RDK X3">
+
+:::info
+这里是只在版本 3.0.0 中显示的RDK X3 内容。
+:::
+
+</DocScope>
+
+<DocScope versions="3.5.0" products="RDK X5">
+
+:::info
+这里是只在版本 3.5.0 中显示的RDK X5 内容。
+:::
+
+</DocScope>
+
+<DocScope versions="3.5.0" products="RDK X5 Module">
+
+:::info
+这里是只在版本 3.5.0 中显示的RDK X5 Module内容。
+:::
+
+</DocScope>
+
+<DocScope versions="6.0.0" products="RDK S700">
+
+:::info
+这里是只在版本 3.5.0 中显示的RDK X5 Module内容。
+:::
+
+</DocScope>
 :::tip 📦 完整硬件资料汇总
 
 相关下载资源请参考：[下载资源汇总](../download)

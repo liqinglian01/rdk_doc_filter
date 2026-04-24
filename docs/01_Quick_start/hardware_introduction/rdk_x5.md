@@ -1,8 +1,9 @@
 ---
 sidebar_position: 2
+
 ---
 
-# 1.1.2 RDK X5
+# 1.1.1 RDK X5
 
 :::tip 📦 完整硬件资料汇总
 

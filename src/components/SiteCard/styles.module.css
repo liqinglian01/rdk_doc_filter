@@ -1,0 +1,234 @@
+.card {
+
+  --card-accent: var(--ifm-color-primary);
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.6rem;
+
+  padding: 1.25rem 1.25rem 1rem;
+
+  border: 1px solid var(--ifm-color-emphasis-200);
+
+  border-radius: 12px;
+
+  background: var(--ifm-color-emphasis-100);
+
+  /* 立体：外阴影分层 + 顶缘微高光（inset） */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 4px 14px rgba(15, 23, 42, 0.07),
+    0 0 0 1px rgba(15, 23, 42, 0.03);
+
+  color: inherit;
+
+  text-decoration: none;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+
+  overflow: hidden;
+
+  min-height: 140px;
+
+}
+
+:global(html[data-theme="dark"]) .card {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.35),
+    0 6px 18px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+
+
+.card::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  bottom: 0;
+
+  width: 7px;
+
+  border-radius: 12px 0 0 12px;
+
+  background: var(--card-accent);
+
+  opacity: 0.85;
+
+}
+
+
+
+.card:hover {
+
+  transform: translateY(-2px);
+
+  border-color: var(--card-accent);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 10px 28px rgba(15, 23, 42, 0.12),
+    0 0 0 1px color-mix(in srgb, var(--card-accent) 22%, rgba(15, 23, 42, 0.06));
+
+  text-decoration: none;
+
+  color: inherit;
+
+}
+
+:global(html[data-theme="dark"]) .card:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.45),
+    0 12px 32px rgba(0, 0, 0, 0.45),
+    0 0 0 1px color-mix(in srgb, var(--card-accent) 35%, rgba(255, 255, 255, 0.08));
+}
+
+
+
+.cardHeader {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 0.75rem;
+
+}
+
+
+
+.title {
+
+  margin: 0;
+
+  font-size: 1.05rem;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+}
+
+
+
+.externalIcon {
+
+  margin-left: 0.35rem;
+
+  font-size: 0.85em;
+
+  opacity: 0.6;
+
+}
+
+
+
+.tags {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.25rem;
+
+  flex-shrink: 0;
+
+}
+
+
+
+.tag {
+
+  font-size: 0.7rem;
+
+  line-height: 1;
+
+  padding: 3px 8px;
+
+  border-radius: 999px;
+
+  background: var(--ifm-color-emphasis-100);
+
+  color: var(--ifm-color-emphasis-700);
+
+  white-space: nowrap;
+
+}
+
+
+
+.tag_version {
+
+  background: color-mix(in srgb, var(--card-accent) 12%, transparent);
+
+  color: var(--card-accent);
+
+  font-weight: 700;
+
+}
+
+
+
+.tag_count {
+
+  background: var(--ifm-color-emphasis-200);
+
+  color: var(--ifm-color-emphasis-800);
+
+}
+
+
+
+.description {
+
+  margin: 0;
+
+  font-size: 0.9rem;
+
+  line-height: 1.55;
+
+  color: var(--ifm-color-emphasis-700);
+
+  flex: 1;
+
+}
+
+
+
+.cardFooter {
+
+  display: flex;
+
+  justify-content: flex-end;
+
+}
+
+
+
+.cta {
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  color: var(--card-accent);
+
+}
+
+
