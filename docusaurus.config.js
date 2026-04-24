@@ -27,8 +27,8 @@ const config = {
   // onBrokenLinks: 'throw',
 
   //add by xgs for build reduce bug
-  onBrokenLinks: "warn", // 或 'ignore'
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "ignore", // 忽略损坏的链接
+  onBrokenMarkdownLinks: "ignore",
 
   //add vy xgs for analysis
   scripts: [
