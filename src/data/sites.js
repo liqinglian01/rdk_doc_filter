@@ -46,7 +46,7 @@ export const groups = [
   {
     id: "accessories",
     anchor: "accessories",
-    title: "配件",
+    title: "产品与配件",
     subtitle: "IMU / Stereo Camera 系列",
     accent: "#14b8a6",
   },
@@ -97,7 +97,8 @@ export const sites = [
   // ---------- 示例 ----------
   { id: "examples", group: "examples", title: "应用开发示例", description: "X3 / X5 / S100 / S600 示例集合（同一仓库内分 sidebar）。", href: "/examples/" },
 
-  // ---------- 配件 ----------
+  // ---------- 产品与配件 ----------
+  { id: "accessories", group: "accessories", title: "RDK Magicbox 文档", description: "RDK IMU Module / Stereo Camera Module / GS130W / GS130WI。", href: "/accessories/" },
   { id: "accessories", group: "accessories", title: "配件文档", description: "RDK IMU Module / Stereo Camera Module / GS130W / GS130WI。", href: "/accessories/" },
 
   // ---------- 软件 ----------
