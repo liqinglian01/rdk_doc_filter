@@ -5,7 +5,7 @@ import DocScopeSelectors from '@site/src/components/DocScopeSelectors';
 export default function NavbarItemCustomDocScopeSelectors() {
   const location = useLocation();
   
-  const isHomePage = location.pathname === '/' || location.pathname === '/rdk_doc/' || location.pathname === '/rdk_doc';
+  const isHomePage = location.pathname === '/' || location.pathname === '/rdk_doc_filter/' || location.pathname === '/rdk_doc_filter';
   
   if (isHomePage) {
     return null;
