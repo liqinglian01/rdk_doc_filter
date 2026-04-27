@@ -88,14 +88,6 @@
     ],
     "isCategory": true
   },
-  "example-sidebar-config": {
-    "versions": [
-      ">= 3.5.0"
-    ],
-    "products": [
-      "RDK X5"
-    ]
-  },
   "01_Quick_start/hardware_introduction/rdk_ultra": {
     "versions": [
       "4.0.5"

@@ -3,8 +3,11 @@
 // (when paired with `@ts-check`).
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
-
+import "dotenv/config";
+import { createRequire } from "module";
 import { themes as prismThemes } from "prism-react-renderer";
+
+const require = createRequire(import.meta.url);
 import remarkDirective from "remark-directive";
 import remarkDocScope from "./src/remark/remark-doc-scope.js";
 import remarkGenerateSidebarConfig from "./src/remark/remark-generate-sidebar-config.js";
@@ -82,6 +85,20 @@ const config = {
   ],
   // add by xgs for S100_doc 2025 年 4 月 21 日 16:34:51
   plugins: [
+    [
+      require.resolve("./plugins/docusaurus-plugin-umami-analytics"),
+      {
+        // Umami Cloud 使用 cloud.umami.is；也可用 UMAMI_WEBSITE_ID / UMAMI_SCRIPT_SRC 覆盖
+        websiteId:
+          process.env.UMAMI_WEBSITE_ID ?? "82f6d0fb-4583-4bc9-a7aa-909cd7e753a2",
+        src: process.env.UMAMI_SCRIPT_SRC ?? "https://cloud.umami.is/script.js",
+        enableScroll: true,
+        enableCopy: true,
+        enableToc: true,
+        enableSearch: true,
+        enableReadComplete: true,
+      },
+    ],
     [
       "@docusaurus/plugin-content-docs",
       {

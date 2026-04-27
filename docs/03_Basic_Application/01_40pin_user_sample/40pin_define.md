@@ -4,6 +4,13 @@ sidebar_position: 1
 
 # 管脚定义与应用
 
+```
+{
+  "versions": [">= 3.5.0"],
+  "products": ["RDK X5"]
+}
+```
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
