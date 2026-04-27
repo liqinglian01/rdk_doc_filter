@@ -7,6 +7,7 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import remarkDirective from "remark-directive";
 import remarkDocScope from "./src/remark/remark-doc-scope.js";
+import remarkGenerateSidebarConfig from "./src/remark/remark-generate-sidebar-config.js";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -70,7 +71,7 @@ const config = {
           routeBasePath: "/", // 修改默认文档路径
           sidebarPath: "./sidebars.js",
           showLastUpdateTime: true,
-          remarkPlugins: [remarkDirective, remarkDocScope],
+          remarkPlugins: [remarkDirective, remarkDocScope, remarkGenerateSidebarConfig],
         },
         blog: { showReadingTime: true },
         pages: { exclude: ["/imager/**", "**/dl/**"] },
@@ -89,7 +90,7 @@ const config = {
         routeBasePath: "rdk_s",
         sidebarPath: "./sidebars.js",
         showLastUpdateTime: true,
-        remarkPlugins: [remarkDirective, remarkDocScope],
+        remarkPlugins: [remarkDirective, remarkDocScope, remarkGenerateSidebarConfig],
       },
     ],
   ],

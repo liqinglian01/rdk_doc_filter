@@ -1,28 +1,7 @@
 import React from 'react';
 import OriginalDocSidebar from '@theme-original/DocSidebar';
 import { useDocScopeFilter } from '@site/src/context/DocScopeFilterContext';
-
-const SIDEBAR_SCOPE_MAP = {
-  'rdk_x5': { versions: ['3.5.0'], products: ['RDK X5'] },
-  'rdk_x3': { versions: ['3.0.0'], products: ['RDK X3'] },
-};
-
-function matchScope(item, version, product) {
-  const id = (item.id || '').toLowerCase();
-  const label = (item.label || '').toLowerCase();
-  const href = (item.href || '').toLowerCase();
-  const docId = (item.docId || '').toLowerCase();
-
-  for (const [key, scope] of Object.entries(SIDEBAR_SCOPE_MAP)) {
-    const keyLower = key.toLowerCase();
-    if (id.includes(keyLower) || label.includes(keyLower) || href.includes(keyLower) || docId.includes(keyLower)) {
-      const vMatch = scope.versions.length === 0 || scope.versions.includes(version);
-      const pMatch = scope.products.length === 0 || scope.products.includes(product);
-      return vMatch && pMatch;
-    }
-  }
-  return true;
-}
+import { shouldShowInSidebar } from '@site/src/context/sidebar-scope-config.js';
 
 function filterItems(items, version, product) {
   if (!items) return items;
@@ -35,7 +14,7 @@ function filterItems(items, version, product) {
       }
       continue;
     }
-    if (matchScope(item, version, product)) {
+    if (shouldShowInSidebar(item, version, product)) {
       result.push(item);
     }
   }

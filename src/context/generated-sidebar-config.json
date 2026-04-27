@@ -1,0 +1,115 @@
+{
+  "quick_start/hardware_introduction/rdk_ultra": {
+    "versions": [
+      {
+        "operator": "",
+        "version": "4.0.5",
+        "original": "\"4.0.5\""
+      }
+    ],
+    "products": [
+      "RDK S100"
+    ]
+  },
+  "quick_start/install_os/rdk_x3": {
+    "versions": [
+      {
+        "operator": "",
+        "version": "3.0.0",
+        "original": "3.0.0"
+      }
+    ],
+    "products": [
+      "RDK X3"
+    ],
+    "isCategory": true
+  },
+  "quick_start/install_os/rdk_x3_module": {
+    "versions": [
+      {
+        "operator": "",
+        "version": "3.0.0",
+        "original": "3.0.0"
+      }
+    ],
+    "products": [
+      "RDK X3 Module"
+    ],
+    "isCategory": true
+  },
+  "quick_start/install_os/rdk_x5": {
+    "versions": [
+      {
+        "operator": "",
+        "version": "3.5.0",
+        "original": "3.5.0"
+      }
+    ],
+    "products": [
+      "RDK X5"
+    ],
+    "isCategory": true
+  },
+  "quick_start/install_os/rdk_x5_module": {
+    "versions": [
+      {
+        "operator": "",
+        "version": "3.5.0",
+        "original": "3.5.0"
+      }
+    ],
+    "products": [
+      "RDK X5 Module"
+    ],
+    "isCategory": true
+  },
+  "system_configuration/network_blueteeth": {
+    "versions": [
+      {
+        "operator": ">=",
+        "version": "3.5.1",
+        "original": "\">= 3.5.1\""
+      }
+    ],
+    "products": [
+      "RDK X5"
+    ]
+  },
+  "basic_application": {
+    "versions": [
+      {
+        "operator": ">=",
+        "version": "3.5.0",
+        "original": ">= 3.5.0"
+      }
+    ],
+    "products": [
+      "RDK X5"
+    ],
+    "isCategory": true
+  },
+  "example-sidebar-config": {
+    "versions": [
+      ">= 3.5.0"
+    ],
+    "products": [
+      "RDK X5"
+    ]
+  },
+  "01_Quick_start/hardware_introduction/rdk_ultra": {
+    "versions": [
+      "4.0.5"
+    ],
+    "products": [
+      "RDK S100"
+    ]
+  },
+  "02_System_configuration/01_network_blueteeth": {
+    "versions": [
+      ">= 3.5.1"
+    ],
+    "products": [
+      "RDK X5"
+    ]
+  }
+}

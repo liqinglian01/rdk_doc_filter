@@ -5,13 +5,29 @@ import { useHistory, useLocation } from '@docusaurus/router';
 export const VERSION_PRODUCT_MATRIX = {
   '3.0.0': ['RDK X3', 'RDK X3 Module'],
   '3.5.0': ['RDK X5', 'RDK X5 Module'],
+  '3.5.1': ['RDK X5'],
+  '3.6.0': ['RDK X5'],
   '4.0.5': ['RDK S100'],
   '5.0.1': ['RDK S600'],
   '6.0.0': ['RDK S700'],
 };
 
+/** 产品 → 支持的版本列表 */
+export const PRODUCT_VERSION_MATRIX = {
+  'RDK X3': ['3.0.0'],
+  'RDK X3 Module': ['3.0.0'],
+  'RDK X5': ['3.5.0', '3.5.1', '3.6.0'],
+  'RDK X5 Module': ['3.5.0'],
+  'RDK S100': ['4.0.5'],
+  'RDK S600': ['5.0.1'],
+  'RDK S700': ['6.0.0'],
+};
+
 const DEFAULT_VERSION = '3.0.0';
 const DEFAULT_PRODUCT = VERSION_PRODUCT_MATRIX[DEFAULT_VERSION][0];
+
+const STORAGE_KEY_VERSION = 'doc_scope_version';
+const STORAGE_KEY_PRODUCT = 'doc_scope_product';
 
 const defaultCtx = {
   version: DEFAULT_VERSION,
@@ -34,9 +50,33 @@ function normalizeVersionFromQuery(v) {
   return DEFAULT_VERSION;
 }
 
+function saveToStorage(version, product) {
+  try {
+    localStorage.setItem(STORAGE_KEY_VERSION, version);
+    localStorage.setItem(STORAGE_KEY_PRODUCT, product);
+  } catch (e) {
+    // localStorage 不可用时忽略
+  }
+}
+
+function loadFromStorage() {
+  try {
+    const v = localStorage.getItem(STORAGE_KEY_VERSION);
+    const p = localStorage.getItem(STORAGE_KEY_PRODUCT);
+    if (v && p && VERSION_PRODUCT_MATRIX[v] && VERSION_PRODUCT_MATRIX[v].includes(p)) {
+      return { version: v, product: p };
+    }
+    if (v && VERSION_PRODUCT_MATRIX[v]) {
+      return { version: v, product: VERSION_PRODUCT_MATRIX[v][0] };
+    }
+  } catch (e) {
+    // localStorage 不可用时忽略
+  }
+  return null;
+}
+
 /**
- * 仅从 URL 派生，不用 useState + effect 与 replace 做二次同步，避免和 Docusaurus PendingNavigation 与路由更新竞态，
- * 出现版本/产品总回到 3.0.0 + RDK X3、下拉「像被固定」的现象。
+ * 从 URL 查询参数解析版本和产品，如果没有则从 localStorage 读取，最后使用默认值。
  */
 function parseFilter(search) {
   const normalized = !search
@@ -51,6 +91,11 @@ function parseFilter(search) {
     const pRaw = q.get('p');
     const p = pRaw && list.includes(pRaw) ? pRaw : list[0];
     return { version: v, product: p };
+  }
+  // URL 中没有参数，从 localStorage 读取
+  const stored = loadFromStorage();
+  if (stored) {
+    return stored;
   }
   return { version: DEFAULT_VERSION, product: DEFAULT_PRODUCT };
 }
@@ -77,6 +122,11 @@ export function DocScopeFilterProvider({ children }) {
     [location.search],
   );
 
+  // 每次版本/产品变化时保存到 localStorage
+  useMemo(() => {
+    saveToStorage(version, product);
+  }, [version, product]);
+
   const setVersion = useCallback(
     (v) => {
       const newV = normalizeVersionFromQuery(v);
@@ -92,13 +142,13 @@ export function DocScopeFilterProvider({ children }) {
 
   const setProduct = useCallback(
     (p) => {
-      const { version: v } = parseFilter(location.search);
-      const list = VERSION_PRODUCT_MATRIX[v];
-      if (!list?.includes(p)) {
+      const versions = PRODUCT_VERSION_MATRIX[p];
+      if (!versions || versions.length === 0) {
         return;
       }
+      const nextV = versions[0];
       const next = new URLSearchParams(location.search);
-      next.set('v', v);
+      next.set('v', nextV);
       next.set('p', p);
       replaceSearch(history, location, `?${next.toString()}`);
     },
@@ -112,6 +162,7 @@ export function DocScopeFilterProvider({ children }) {
       setVersion,
       setProduct,
       matrix: VERSION_PRODUCT_MATRIX,
+      productMatrix: PRODUCT_VERSION_MATRIX,
     }),
     [version, product, setVersion, setProduct],
   );

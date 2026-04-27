@@ -1,8 +1,16 @@
 ---
 sidebar_position: 1
+sidebar_versions: ">= 3.5.1"
+sidebar_products: "RDK X5"
 ---
 
-# 2.1 网络与蓝牙配置
+# 2.1 文件 Front Matter 范围值测试
+
+## 设置为 RDK X5 >= 3.5.1 时显示
+
+sidebar_versions: ">= 3.5.1"
+sidebar_products: "RDK X5"
+
 
 本章节主要介绍开发板有线、无线网络配置的修改方法。
 

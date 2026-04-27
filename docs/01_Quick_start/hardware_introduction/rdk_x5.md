@@ -3,7 +3,36 @@ sidebar_position: 2
 
 ---
 
-# 1.1.1 RDK X5
+# 1.1.1 内容块范围值匹配测试
+
+```mdx-code-block
+import DocScope from '@site/src/components/DocScope';
+```
+
+
+<DocScope versions=">= 3.5.1" products="RDK X5">
+
+:::info
+versions=">= 3.5.1" products="RDK X5"，这里是只在版本 3.5.1 及以上版本中显示的RDK X5 内容。
+:::
+
+</DocScope>
+
+<DocScope versions="3.5.0" products="RDK X5 Module">
+
+:::info
+这里是只在版本 3.5.0 中显示的RDK X5 Module内容。
+:::
+
+</DocScope>
+
+<DocScope versions="6.0.0" products="RDK S700">
+
+:::info
+这里是只在版本 3.5.0 中显示的RDK X5 Module内容。
+:::
+
+</DocScope>
 
 :::tip 📦 完整硬件资料汇总
 

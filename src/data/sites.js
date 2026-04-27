@@ -66,6 +66,66 @@ export const groups = [
   },
 ];
 
+// 英文版本分组
+export const groupsEn = [
+  {
+    id: "products",
+    anchor: "products",
+    title: "RDK User Manual",
+    subtitle: "Hardware / System Installation / Accessories / Download Resources / Appendix / FAQ",
+    accent: "#2e8555",
+  },
+  {
+    id: "system-software",
+    anchor: "system-software",
+    title: "SDK User Manual",
+    subtitle: "SDK Development / Deployment / Model Conversion",
+    accent: "#1f6feb",
+  },
+  {
+    id: "robot-app",
+    anchor: "robot-app",
+    title: "Robot Applications",
+    subtitle: "TROS · Synchronous release across platforms",
+    accent: "#9333ea",
+  },
+  {
+    id: "model-zoo",
+    anchor: "model-zoo",
+    title: "Algorithm Applications · Model Zoo",
+    subtitle: "Official model repository entrance (external link)",
+    accent: "#f97316",
+  },
+  {
+    id: "examples",
+    anchor: "examples",
+    title: "Application Development Examples",
+    subtitle: "Covering X3 / X5 / S100 / S600",
+    accent: "#0ea5e9",
+  },
+  {
+    id: "accessories",
+    anchor: "accessories",
+    title: "Products & Accessories",
+    subtitle: "IMU / Stereo Camera Series",
+    accent: "#14b8a6",
+  },
+  {
+    id: "software",
+    anchor: "software",
+    title: "Software",
+    subtitle: "Development / Burning Tools",
+    accent: "#db2777",
+  },
+  {
+    id: "toolchain",
+    anchor: "toolchain",
+    title: "Algorithm Toolchain",
+    subtitle: "Model Conversion / Quantization / Deployment",
+    accent: "#dc2626",
+  },
+];
+
 /**
  * 每个卡片的字段说明：
  *  - id            稳定标识，与 sites.config.json 对齐
@@ -109,10 +169,47 @@ export const sites = [
   { id: "algorithm-toolchain", group: "toolchain", title: "算法工具链", description: "模型转换 / 量化 / 精度调优 / 部署。", href: "/algorithm-toolchain/" },
 ];
 
-export function sitesByGroup() {
+// 英文版本站点
+export const sitesEn = [
+  // ---------- 产品 ----------
+  { id: "product-rdk-manual", group: "products", title: "RDK X3/X5 User Manual", description: "RDK X3/X5 Documentation", href: "/rdk_doc_filter/en/Quick_start", tags: ["User Manual"] },
+  { id: "product-rdk-manual", group: "products", title: "RDK S100/S600 User Manual", description: "RDK S100/S600 Documentation", href: "/rdk_doc_filter/en/rdk_s/Quick_start", tags: ["User Manual"] },
+  
+  // ---------- 系统软件 ----------
+  { id: "system-software-sdk", group: "system-software", title: "SDK", description: "System Software SDK Documentation Entrance.", href: "/system-software/sdk", tags: ["System Software"] },
+ 
+
+  // ---------- 机器人应用 ----------
+  { id: "tros", group: "robot-app", title: "TROS", description: "Unified framework for robot application development, synchronous release across platforms.", href: "/tros/", tags: ["Multi-platform"] },
+
+  // ---------- Model Zoo ----------
+ 
+  { id: "model-zoo-hub",   group: "model-zoo", title: "Model Zoo X3/X5",  description: "Model Zoo sub-site (link aggregation page).",          href: "/model-zoo/" },
+  { id: "model-zoo-hub",   group: "model-zoo", title: "Model Zoo S100/S600",  description: "Model Zoo sub-site (link aggregation page).",          href: "/model-zoo/" },
+
+
+  // ---------- 示例 ----------
+  { id: "examples", group: "examples", title: "Application Development Examples", description: "X3 / X5 / S100 / S600 example collection (separated by sidebar in the same repository).", href: "/examples/" },
+
+  // ---------- 产品与配件 ----------
+  { id: "accessories", group: "accessories", title: "RDK Magicbox Documentation", description: "RDK IMU Module / Stereo Camera Module / GS130W / GS130WI.", href: "/accessories/" },
+  { id: "accessories", group: "accessories", title: "Accessories Documentation", description: "RDK IMU Module / Stereo Camera Module / GS130W / GS130WI.", href: "/accessories/" },
+
+  // ---------- 软件 ----------
+  { id: "software-rdk-studio", group: "software", title: "RDK Studio", description: "Official integrated development tool.", href: "/software/rdk-studio/" },
+  { id: "software-xburn",      group: "software", title: "Xburn",      description: "System burning tool.",    href: "/software/xburn/" },
+
+  // ---------- 算法工具链 ----------
+  { id: "algorithm-toolchain", group: "toolchain", title: "Algorithm Toolchain", description: "Model conversion / quantization / precision tuning / deployment.", href: "/algorithm-toolchain/" },
+];
+
+export function sitesByGroup(sitesData) {
+  const targetSites = sitesData || sites;
+  const targetGroups = sitesData === sitesEn ? groupsEn : groups;
+  
   const grouped = {};
-  for (const g of groups) grouped[g.id] = [];
-  for (const s of sites) {
+  for (const g of targetGroups) grouped[g.id] = [];
+  for (const s of targetSites) {
     if (!grouped[s.group]) grouped[s.group] = [];
     grouped[s.group].push(s);
   }

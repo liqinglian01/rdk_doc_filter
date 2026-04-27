@@ -1,8 +1,15 @@
 ---
 sidebar_position: 3
+sidebar_versions: "4.0.5"
+sidebar_products: "RDK S100"
 ---
 
-# 1.1.2 RDK Ultra
+# 1.1.2 Front Matter 测试
+
+设置：
+
+sidebar_versions: "4.0.5"
+sidebar_products: "RDK S100"
 
 :::tip 📦 完整硬件资料汇总
 

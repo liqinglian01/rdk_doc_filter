@@ -4,6 +4,15 @@ sidebar_position: 1
 
 # 1.2.2.1 全镜像烧录
 
+设置：
+添加 docs\01_Quick_start\install_os\rdk_x3_module\_sidebar_scope.json
+```json
+{
+  "versions": ["3.0.0"],
+  "products": ["RDK X3 Module"] 
+}
+```
+
 全镜像烧录是指将完整的操作系统镜像写入存储介质（通常为 SD 卡或 eMMC）的过程。该过程主要用于为开发板提供运行环境，包括用户空间应用、驱动程序及基础软件服务。
 
 :::warning 注意事项

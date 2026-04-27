@@ -4,10 +4,16 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "generate-sidebar-config": "node scripts/generate-sidebar-config.js",
+    "watch-sidebar-config": "node scripts/watch-sidebar-config.js",
+    "start": "npm run generate-sidebar-config && concurrently --kill-others --raw \"npm run watch-sidebar-config\" \"docusaurus start --locale zh-Hans\"",
+    "start:en": "npm run generate-sidebar-config && concurrently --kill-others --raw \"npm run watch-sidebar-config\" \"docusaurus start --locale en\"",
+    "start:port": "npm run generate-sidebar-config && concurrently --kill-others --raw \"npm run watch-sidebar-config\" \"docusaurus start --port 3001\"",
+    "start:no-watch": "npm run generate-sidebar-config && docusaurus start",
+    "start:no-watch:en": "npm run generate-sidebar-config && docusaurus start --locale en",
+    "build": "npm run generate-sidebar-config && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
+    "deploy": "npm run generate-sidebar-config && docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
@@ -31,7 +37,8 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",
-    "@docusaurus/types": "^3.7.0"
+    "@docusaurus/types": "^3.7.0",
+    "concurrently": "^9.2.1"
   },
   "browserslist": {
     "production": [

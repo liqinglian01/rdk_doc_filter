@@ -78,18 +78,31 @@ function ScopeMenu({ label, value, options, onPick }) {
 }
 
 /**
- * 文档页顶栏：先选版本，再选该版本下的产品；与 URL ?v=&p= 同步。
+ * 文档页顶栏：先选产品，再选该产品支持的版本；与 URL ?v=&p= 同步。
  * 使用自定义下拉而非原生 select，避免嵌入式预览等环境无法弹出原生菜单。
  */
 export default function DocScopeSelectors() {
-  const { version, product, setVersion, setProduct, matrix } = useDocScopeFilter();
-  const products = useMemo(() => matrix[version] || [], [matrix, version]);
-  const productValue = useMemo(() => products.includes(product) ? product : products[0], [products, product]);
+  const { version, product, setVersion, setProduct, matrix, productMatrix } = useDocScopeFilter();
+  
+  // 获取所有产品列表
+  const allProducts = useMemo(() => {
+    const productsSet = new Set();
+    Object.values(matrix).forEach(products => {
+      products.forEach(p => productsSet.add(p));
+    });
+    return Array.from(productsSet);
+  }, [matrix]);
+  
+  // 获取当前产品支持的版本列表
+  const versions = useMemo(() => productMatrix[product] || [], [productMatrix, product]);
+  
+  // 确保当前版本在产品支持的版本列表中
+  const versionValue = useMemo(() => versions.includes(version) ? version : versions[0], [versions, version]);
 
   return (
     <div className="doc-scope-selectors">
-      <ScopeMenu label="版本" value={version} options={Object.keys(matrix)} onPick={setVersion} />
-      <ScopeMenu label="产品" value={productValue} options={products} onPick={setProduct} />
+      <ScopeMenu label="产品" value={product} options={allProducts} onPick={setProduct} />
+      <ScopeMenu label="版本" value={versionValue} options={versions} onPick={setVersion} />
     </div>
   );
 }
